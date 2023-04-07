@@ -1,5 +1,5 @@
 PACKAGE_NAME?=github.com/projectcalico/node
-GO_BUILD_VER?=v0.82
+GO_BUILD_VER?=v0.72.1
 
 # This needs to be evaluated before the common makefile is included.
 # This var contains some default values that the common makefile may append to.
@@ -172,9 +172,13 @@ build:  $(NODE_CONTAINER_BINARY)
 
 remote-deps: mod-download
 	# Recreate the directory so that we are sure to clean up any old files.
+	chmod 755 -R filesystem
 	rm -rf filesystem/etc/calico/confd
 	mkdir -p filesystem/etc/calico/confd
-	rm -rf config
+	if [ -d config ]; then\
+		chmod 755 -R config;\
+		rm -rf config;\
+	fi
 	rm -rf bin/bpf
 	mkdir -p bin/bpf
 	rm -rf filesystem/usr/lib/calico/bpf/
@@ -188,6 +192,7 @@ remote-deps: mod-download
 		cp -r `go list -mod=mod -m -f "{{.Dir}}" github.com/projectcalico/felix`/bpf-gpl bin/bpf; \
 		cp -r `go list -mod=mod -m -f "{{.Dir}}" github.com/projectcalico/felix`/bpf-apache bin/bpf; \
 		chmod -R +w bin/bpf; \
+		./makefile-fix-apache-bpf.sh \
 		chmod +x bin/bpf/bpf-gpl/list-* bin/bpf/bpf-gpl/calculate-*; \
 		make -j 16 -C ./bin/bpf/bpf-apache/ all; \
 		make -j 16 -C ./bin/bpf/bpf-gpl/ all; \
