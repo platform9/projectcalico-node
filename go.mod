@@ -1,6 +1,6 @@
 module github.com/projectcalico/node
 
-go 1.15
+go 1.16
 
 require (
 	github.com/kelseyhightower/confd v0.0.0-00010101000000-000000000000
@@ -11,18 +11,24 @@ require (
 	github.com/projectcalico/felix v0.0.0-20211122104820-43b47b0b8afc
 	github.com/projectcalico/libcalico-go v1.7.2-0.20211119233600-e3f7c620522a
 	github.com/projectcalico/typha v0.7.3-0.20211122094324-72659b47ead5
-	github.com/sirupsen/logrus v1.4.2
+	github.com/sirupsen/logrus v1.6.0
 	github.com/vishvananda/netlink v1.1.0
-	golang.org/x/sync v0.0.0-20200625203802-6e8e738ad208
+	golang.org/x/sync v0.0.0-20201020160332-67f06af15bc9
 	gopkg.in/fsnotify/fsnotify.v1 v1.4.7
 	k8s.io/api v0.19.6
 	k8s.io/apimachinery v0.19.6
 	k8s.io/client-go v0.19.6
 )
 
+require (
+	github.com/buger/jsonparser v1.1.1 // indirect
+	golang.org/x/net v0.0.0-20210805182204-aaa1db679c0d // indirect
+	google.golang.org/genproto v0.0.0-20220107163113-42d7afdf6368 // indirect
+)
+
 replace (
 	github.com/Microsoft/hcsshim => github.com/projectcalico/hcsshim v0.8.9-calico
-	github.com/kelseyhightower/confd => github.com/projectcalico/confd v1.0.1-0.20211122095224-9387a0d3fe1e
+	github.com/kelseyhightower/confd => ../confd
 
 	github.com/sirupsen/logrus => github.com/projectcalico/logrus v1.0.4-calico
 
@@ -49,3 +55,15 @@ replace (
 	k8s.io/sample-apiserver => k8s.io/sample-apiserver v0.18.12
 
 )
+
+replace github.com/projectcalico/libcalico-go => ../libcalico-go
+
+replace github.com/projectcalico/felix => ../felix
+
+replace github.com/projectcalico/typha => ../typha
+
+replace github.com/google/gnostic => github.com/googleapis/gnostic v0.6.8
+
+//replace github.com/googleapis/gnostic v0.6.9 => github.com/googleapis/gnostic v0.4.0
+//replace github.com/googleapis/gnostic/openapiv2 => github.com/googleapis/gnostic/OpenAPIv2 v0.4.0
+replace google.golang.org/grpc => google.golang.org/grpc v1.29.0
