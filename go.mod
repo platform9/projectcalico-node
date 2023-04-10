@@ -64,6 +64,8 @@ replace github.com/projectcalico/typha => ../typha
 
 replace github.com/google/gnostic => github.com/googleapis/gnostic v0.6.8
 
+replace github.com/dgrijalva/jwt-go => github.com/golang-jwt/jwt/v4 v4.4.2
+
 //replace github.com/googleapis/gnostic v0.6.9 => github.com/googleapis/gnostic v0.4.0
 //replace github.com/googleapis/gnostic/openapiv2 => github.com/googleapis/gnostic/OpenAPIv2 v0.4.0
 replace google.golang.org/grpc => google.golang.org/grpc v1.29.0
