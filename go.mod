@@ -22,7 +22,6 @@ require (
 
 require (
 	github.com/buger/jsonparser v1.1.1 // indirect
-	golang.org/x/net v0.0.0-20210805182204-aaa1db679c0d // indirect
 	google.golang.org/genproto v0.0.0-20220107163113-42d7afdf6368 // indirect
 )
 
@@ -69,6 +68,8 @@ replace github.com/dgrijalva/jwt-go => github.com/golang-jwt/jwt/v4 v4.4.2
 replace github.com/gogo/protobuf => github.com/gogo/protobuf v1.3.2
 
 replace github.com/prometheus/client_golang => github.com/prometheus/client_golang v1.11.1
+
+replace golang.org/x/crypto => golang.org/x/crypto v0.0.0-20220314234659-1baeb1ce4c0b
 
 //replace github.com/googleapis/gnostic v0.6.9 => github.com/googleapis/gnostic v0.4.0
 //replace github.com/googleapis/gnostic/openapiv2 => github.com/googleapis/gnostic/OpenAPIv2 v0.4.0
