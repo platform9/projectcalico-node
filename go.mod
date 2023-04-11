@@ -77,4 +77,6 @@ replace google.golang.org/grpc => google.golang.org/grpc v1.29.0
 
 replace golang.org/x/net => golang.org/x/net v0.7.0
 
+replace github.com/containernetworking/cni => github.com/containernetworking/cni v0.8.1
+
 replace golang.org/x/text => golang.org/x/text v0.3.8
