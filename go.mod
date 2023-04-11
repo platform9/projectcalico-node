@@ -75,4 +75,6 @@ replace golang.org/x/crypto => golang.org/x/crypto v0.0.0-20220314234659-1baeb1c
 //replace github.com/googleapis/gnostic/openapiv2 => github.com/googleapis/gnostic/OpenAPIv2 v0.4.0
 replace google.golang.org/grpc => google.golang.org/grpc v1.29.0
 
+replace golang.org/x/net => golang.org/x/net v0.7.0
+
 replace golang.org/x/text => golang.org/x/text v0.3.8
