@@ -13,7 +13,7 @@ require (
 	github.com/projectcalico/typha v0.7.3-0.20211122094324-72659b47ead5
 	github.com/sirupsen/logrus v1.6.0
 	github.com/vishvananda/netlink v1.1.0
-	golang.org/x/sync v0.0.0-20201207232520-09787c993a3a
+	golang.org/x/sync v0.0.0-20220722155255-886fb9371eb4
 	gopkg.in/fsnotify/fsnotify.v1 v1.4.7
 	k8s.io/api v0.19.6
 	k8s.io/apimachinery v0.19.6
@@ -74,3 +74,5 @@ replace golang.org/x/crypto => golang.org/x/crypto v0.0.0-20220314234659-1baeb1c
 //replace github.com/googleapis/gnostic v0.6.9 => github.com/googleapis/gnostic v0.4.0
 //replace github.com/googleapis/gnostic/openapiv2 => github.com/googleapis/gnostic/OpenAPIv2 v0.4.0
 replace google.golang.org/grpc => google.golang.org/grpc v1.29.0
+
+replace golang.org/x/text => golang.org/x/text v0.3.8
