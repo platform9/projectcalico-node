@@ -28,7 +28,6 @@ require (
 replace (
 	github.com/Microsoft/hcsshim => github.com/projectcalico/hcsshim v0.8.9-calico
 	github.com/kelseyhightower/confd => ../confd
-
 	github.com/sirupsen/logrus => github.com/projectcalico/logrus v1.0.4-calico
 
 	k8s.io/api => k8s.io/api v0.18.12
@@ -55,11 +54,11 @@ replace (
 
 )
 
-replace github.com/projectcalico/libcalico-go => ../libcalico-go
+//replace github.com/projectcalico/libcalico-go => ../libcalico-go
 
-replace github.com/projectcalico/felix => ../felix
+//replace github.com/projectcalico/felix => ../felix
 
-replace github.com/projectcalico/typha => ../typha
+//replace github.com/projectcalico/typha => ../typha
 
 replace github.com/google/gnostic => github.com/googleapis/gnostic v0.6.8
 
@@ -79,6 +78,5 @@ replace golang.org/x/net => golang.org/x/net v0.7.0
 
 replace github.com/containernetworking/cni => github.com/containernetworking/cni v0.8.1
 
-replace github.com/satori/go.uuid => github.com/google/uuid v1.3.0
-
 replace golang.org/x/text => golang.org/x/text v0.3.8
+
