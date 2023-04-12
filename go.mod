@@ -79,8 +79,6 @@ replace golang.org/x/net => golang.org/x/net v0.7.0
 
 replace github.com/containernetworking/cni => github.com/containernetworking/cni v0.8.1
 
-replace github.com/satori/go.uuid => github.com/satori/go.uuid v1.2.1-0.20181028125025-b2ce2384e17b
+replace github.com/satori/go.uuid => github.com/google/uuid v1.3.0
 
 replace golang.org/x/text => golang.org/x/text v0.3.8
-
-replace github.com/osrg/gobgp => github.com/osrg/gobgp v0.0.0-20180701120657-8e6bd4c7145d
