@@ -183,7 +183,7 @@ remote-deps: mod-download
 	mkdir -p bin/bpf
 	rm -rf filesystem/usr/lib/calico/bpf/
 	mkdir -p filesystem/usr/lib/calico/bpf/
-	$(DOCKER_RUN) $(CALICO_BUILD) sh -ec ' \
+	$(DOCKER_RUN) -v $(CURDIR)/../libcalico-go:/go/src/github.com/projectcalico/libcalico-go:rw -v $(CURDIR)/../confd:/go/src/github.com/projectcalico/confd:rw -v $(CURDIR)/../typha:/go/src/github.com/projectcalico/typha:rw -v $(CURDIR)/../felix:/go/src/github.com/projectcalico/felix:rw $(CALICO_BUILD) sh -ec ' \
 		$(GIT_CONFIG_SSH) \
 		cp -r `go list -mod=mod -m -f "{{.Dir}}" github.com/kelseyhightower/confd`/etc/calico/confd/conf.d filesystem/etc/calico/confd/conf.d; \
 		cp -r `go list -mod=mod -m -f "{{.Dir}}" github.com/kelseyhightower/confd`/etc/calico/confd/config filesystem/etc/calico/confd/config; \
@@ -207,7 +207,7 @@ else
 CGO_ENABLED=0
 endif
 
-DOCKER_GO_BUILD_CGO=$(DOCKER_RUN) -e CGO_ENABLED=$(CGO_ENABLED) $(CALICO_BUILD)
+DOCKER_GO_BUILD_CGO=$(DOCKER_RUN) -v $(CURDIR)/../libcalico-go:/go/src/github.com/projectcalico/libcalico-go:rw -v $(CURDIR)/../confd:/go/src/github.com/projectcalico/confd:rw -v $(CURDIR)/../typha:/go/src/github.com/projectcalico/typha:rw -v $(CURDIR)/../felix:/go/src/github.com/projectcalico/felix:rw -e CGO_ENABLED=$(CGO_ENABLED) $(CALICO_BUILD)
 
 $(NODE_CONTAINER_BINARY): $(LOCAL_BUILD_DEP) $(SRC_FILES) go.mod
 	$(DOCKER_GO_BUILD_CGO) sh -c '$(GIT_CONFIG_SSH) go build -v -o $@ $(BUILD_FLAGS) $(LDFLAGS) ./cmd/calico-node/main.go'
@@ -267,7 +267,7 @@ $(BIRD_SOURCE): go.mod
 # download any GPL felix code to include in the image.
 $(FELIX_GPL_SOURCE): go.mod
 	mkdir -p filesystem/included-source/
-	$(DOCKER_RUN) $(CALICO_BUILD) sh -c ' \
+	$(DOCKER_RUN) -v $(CURDIR)/../libcalico-go:/go/src/github.com/projectcalico/libcalico-go:rw -v $(CURDIR)/../confd:/go/src/github.com/projectcalico/confd:rw -v $(CURDIR)/../typha:/go/src/github.com/projectcalico/typha:rw -v $(CURDIR)/../felix:/go/src/github.com/projectcalico/felix:rw $(CALICO_BUILD) sh -c ' \
 		tar cf $@ `go list -m -f "{{.Dir}}" github.com/projectcalico/felix`/bpf-gpl;'
 
 ###############################################################################
@@ -671,7 +671,7 @@ sub-tag-images-%:
 $(WINDOWS_MOD_CACHED_FILES): mod-download
 
 $(WINDOWS_ARCHIVE_ROOT)/confd/config-bgp%: windows-packaging/config-bgp%
-	$(DOCKER_RUN) $(CALICO_BUILD) sh -ec ' \
+	$(DOCKER_RUN) -v $(CURDIR)/../libcalico-go:/go/src/github.com/projectcalico/libcalico-go:rw -v $(CURDIR)/../confd:/go/src/github.com/projectcalico/confd:rw -v $(CURDIR)/../typha:/go/src/github.com/projectcalico/typha:rw -v $(CURDIR)/../felix:/go/src/github.com/projectcalico/felix:rw $(CALICO_BUILD) sh -ec ' \
         $(GIT_CONFIG_SSH) \
         cp -r `go list -mod=mod -m -f "{{.Dir}}" github.com/kelseyhightower/confd`/$< $@'; \
         chmod +w $@
@@ -683,7 +683,7 @@ $(WINDOWS_ARCHIVE_ROOT)/confd/conf.d/%: windows-packaging/conf.d/%
         chmod +w $@
 
 $(WINDOWS_ARCHIVE_ROOT)/confd/templates/%: windows-packaging/templates/%
-	$(DOCKER_RUN) $(CALICO_BUILD) sh -ec ' \
+	$(DOCKER_RUN) -v $(CURDIR)/../libcalico-go:/go/src/github.com/projectcalico/libcalico-go:rw -v $(CURDIR)/../confd:/go/src/github.com/projectcalico/confd:rw -v $(CURDIR)/../typha:/go/src/github.com/projectcalico/typha:rw -v $(CURDIR)/../felix:/go/src/github.com/projectcalico/felix:rw $(CALICO_BUILD) sh -ec ' \
         $(GIT_CONFIG_SSH) \
         cp -r `go list -mod=mod -m -f "{{.Dir}}" github.com/kelseyhightower/confd`/$< $@'; \
         chmod +w $@
