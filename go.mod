@@ -1,6 +1,6 @@
 module github.com/projectcalico/node
 
-go 1.15
+go 1.16
 
 require (
 	github.com/kelseyhightower/confd v0.0.0-00010101000000-000000000000
@@ -11,19 +11,22 @@ require (
 	github.com/projectcalico/felix v0.0.0-20211122104820-43b47b0b8afc
 	github.com/projectcalico/libcalico-go v1.7.2-0.20211119233600-e3f7c620522a
 	github.com/projectcalico/typha v0.7.3-0.20211122094324-72659b47ead5
-	github.com/sirupsen/logrus v1.4.2
+	github.com/sirupsen/logrus v1.6.0
 	github.com/vishvananda/netlink v1.1.0
-	golang.org/x/sync v0.0.0-20200625203802-6e8e738ad208
+	golang.org/x/sync v0.0.0-20220722155255-886fb9371eb4
 	gopkg.in/fsnotify/fsnotify.v1 v1.4.7
 	k8s.io/api v0.19.6
 	k8s.io/apimachinery v0.19.6
 	k8s.io/client-go v0.19.6
 )
 
+require (
+	github.com/buger/jsonparser v1.1.1 // indirect
+	google.golang.org/genproto v0.0.0-20220107163113-42d7afdf6368 // indirect
+)
+
 replace (
 	github.com/Microsoft/hcsshim => github.com/projectcalico/hcsshim v0.8.9-calico
-	github.com/kelseyhightower/confd => github.com/projectcalico/confd v1.0.1-0.20211122095224-9387a0d3fe1e
-
 	github.com/sirupsen/logrus => github.com/projectcalico/logrus v1.0.4-calico
 
 	k8s.io/api => k8s.io/api v0.18.12
@@ -49,3 +52,31 @@ replace (
 	k8s.io/sample-apiserver => k8s.io/sample-apiserver v0.18.12
 
 )
+
+replace github.com/projectcalico/libcalico-go => ../libcalico-go
+
+replace github.com/projectcalico/felix => ../felix
+
+replace github.com/projectcalico/typha => ../typha
+
+replace github.com/kelseyhightower/confd => ../confd
+
+replace github.com/google/gnostic => github.com/googleapis/gnostic v0.6.8
+
+replace github.com/dgrijalva/jwt-go => github.com/golang-jwt/jwt/v4 v4.4.2
+
+replace github.com/gogo/protobuf => github.com/gogo/protobuf v1.3.2
+
+replace github.com/prometheus/client_golang => github.com/prometheus/client_golang v1.11.1
+
+replace golang.org/x/crypto => golang.org/x/crypto v0.0.0-20220314234659-1baeb1ce4c0b
+
+//replace github.com/googleapis/gnostic v0.6.9 => github.com/googleapis/gnostic v0.4.0
+//replace github.com/googleapis/gnostic/openapiv2 => github.com/googleapis/gnostic/OpenAPIv2 v0.4.0
+replace google.golang.org/grpc => google.golang.org/grpc v1.29.0
+
+replace golang.org/x/net => golang.org/x/net v0.7.0
+
+replace github.com/containernetworking/cni => github.com/containernetworking/cni v0.8.1
+
+replace golang.org/x/text => golang.org/x/text v0.3.8
